@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="profile"
+            type="com.pdma.pdma.network.ProfileData" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="6dp"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardUseCompatPadding="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        tools:context=".ui.home.MoveToBankFragment">
+
+        <TextView
+            android:id="@+id/user_ifsc_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:text="@{profile.ifscCode}"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="@+id/ac_no_textView"
+            app:layout_constraintStart_toStartOf="@+id/ac_no_textView"
+            tools:layout_editor_absoluteY="160dp"
+            tools:text="SBIN002154" />
+
+        <TextView
+            android:id="@+id/textView20"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawableEnd="@drawable/ic_baseline_edit_32"
+            android:drawablePadding="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/linked_bank_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/amoun_will_be_transfered_to_linked_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/a_c_holder_name"
+            android:fontFamily="@font/open_sans"
+            app:layout_constraintEnd_toStartOf="@+id/account_holder_textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/account_holder_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            tools:text="Formax It Solutions"
+            android:text="@{profile.nameInBank}"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView22"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/account_no"
+            app:layout_constraintEnd_toEndOf="@+id/textView22"
+            app:layout_constraintStart_toStartOf="@+id/textView22"
+            app:layout_constraintTop_toBottomOf="@+id/account_holder_textView" />
+
+        <TextView
+            android:id="@+id/ac_no_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans"
+            android:text="@{profile.accountNo}"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="@+id/account_holder_textView"
+            app:layout_constraintStart_toStartOf="@+id/account_holder_textView"
+            app:layout_constraintTop_toBottomOf="@+id/account_holder_textView"
+            tools:text="20021546464641" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/ifsc_code"
+            app:layout_constraintEnd_toEndOf="@+id/textView24"
+            app:layout_constraintStart_toStartOf="@+id/textView24"
+            app:layout_constraintTop_toBottomOf="@+id/ac_no_textView" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mtb_amount_textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/user_ifsc_textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView26">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mtb_amount_textInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:hint="@string/enter_amount"
+                android:inputType="numberDecimal"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/select_t_type_radio_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mtb_amount_textInputLayout">
+
+            <RadioButton
+                android:id="@+id/imps_radio_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/open_sans_semibold"
+                android:checked="true"
+                android:text="@string/imps" />
+
+            <RadioButton
+                android:id="@+id/neft_radio_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/open_sans_semibold"
+                android:checked="false"
+                android:text="@string/neft" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/transfer_to_bank_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/transfer_to_bank"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/select_t_type_radio_group"
+            app:layout_constraintStart_toStartOf="@+id/select_t_type_radio_group"
+            app:layout_constraintTop_toBottomOf="@+id/select_t_type_radio_group"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="2dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bank_transfer_charges"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/imps_5rs_neft_10rs"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"/>
+    </LinearLayout>
+</layout>

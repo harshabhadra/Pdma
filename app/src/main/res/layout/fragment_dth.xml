@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.recharge.DthFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        style="@style/AppTheme.AppBarOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/log_in_background"
+        app:elevation="0dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:layout_marginTop="90dp"
+            app:cardMaxElevation="6dp"
+            app:cardUseCompatPadding="true">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F5F5F5">
+
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                        android:id="@+id/searchableSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center_horizontal"
+                        app:BoarderColor="#F5F5F5"
+                        app:BordersSize="4dp"
+                        app:DividerHeight="1dp"
+                        app:DoneSearchTintColor="@android:color/black"
+                        app:ItemsDivider="@android:color/white"
+                        app:RevealEmptyText="Select Operator"
+                        app:RevealViewBackgroundColor="@android:color/white"
+                        app:SearchHintText="Search Operator"
+                        app:SearchViewBackgroundColor="@android:color/white"
+                        app:SearchViewTextColor="@android:color/black"
+                        app:ShowBorders="true"
+                        app:SpinnerExpandHeight="150dp"
+                        app:StartSearchTintColor="@android:color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/dth_customer_id_textInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/searchableSpinner">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/dth_customer_id_textInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/customer_id"
+                            android:inputType="text|number"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/dth_amount_textInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dth_chek_info_button">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/dth_amount_textInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/amount"
+                            android:inputType="number"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/dth_recharge_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="24dp"
+                        android:text="@string/recharge_now"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dth_amount_textInputLayout" />
+
+                    <Button
+                        android:id="@+id/dth_chek_info_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/check_info"
+                        app:layout_constraintEnd_toStartOf="@+id/dth_progressBar2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dth_customer_id_textInputLayout" />
+
+                    <androidx.constraintlayout.widget.Group
+                        android:id="@+id/dth_info_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:constraint_referenced_ids="dth_customer_id_textInputLayout,dth_chek_info_button" />
+
+                    <androidx.constraintlayout.widget.Group
+                        android:id="@+id/dth_amount_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        app:constraint_referenced_ids="dth_amount_textInputLayout
+                    ,dth_recharge_button" />
+
+                    <ProgressBar
+                        android:id="@+id/dth_progressBar2"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/dth_chek_info_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/dth_chek_info_button" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
+        </com.google.android.material.card.MaterialCardView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

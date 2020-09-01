@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.pdma.pdma.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_aepsFragment"
+            app:destination="@id/aepsFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_moneyTransfrFragment"
+            app:destination="@id/moneyTransfrFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_mobileFragment"
+            app:destination="@id/mobileFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_dthFragment"
+            app:destination="@id/dthFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_microAtmFragment"
+            app:destination="@id/microAtmFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_moveToBankFragment"
+            app:destination="@id/moveToBankFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.pdma.pdma.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.pdma.pdma.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/aepsFragment"
+        android:name="com.pdma.pdma.ui.aeps.AepsFragment"
+        android:label="AEPS"
+        tools:layout="@layout/aeps_fragment" >
+        <argument
+            android:name="category"
+            app:argType="com.pdma.pdma.domain.CategoryItem" />
+        <action
+            android:id="@+id/action_aepsFragment_to_fingerPrintFragment"
+            app:destination="@id/fingerPrintFragment" />
+        <action
+            android:id="@+id/action_aepsFragment_to_mantraFragment"
+            app:destination="@id/mantraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fingerPrintFragment"
+        android:name="com.pdma.pdma.ui.aeps.FingerPrintFragment"
+        android:label="@string/capture_fingerprint" >
+        <argument
+            android:name="aepsinput"
+            app:argType="com.pdma.pdma.domain.AepsInput" />
+        <action
+            android:id="@+id/action_fingerPrintFragment_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fingerPrintFragment_to_aepsResponseFragment"
+            app:destination="@id/aepsResponseFragment"
+            app:popUpTo="@id/fingerPrintFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/moneyTransfrFragment"
+        android:name="com.pdma.pdma.ui.moneytransfer.MoneyTransfrFragment"
+        android:label="@string/money_transfer">
+        <action
+            android:id="@+id/action_moneyTransfrFragment_self"
+            app:destination="@id/moneyTransfrFragment"
+            app:popUpTo="@id/moneyTransfrFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mobileFragment"
+        android:name="com.pdma.pdma.ui.recharge.MobileFragment"
+        android:label="@string/mobile_recharge" />
+    <fragment
+        android:id="@+id/dthFragment"
+        android:name="com.pdma.pdma.ui.recharge.DthFragment"
+        android:label=" Dth Recharge"
+        tools:layout="@layout/fragment_dth" />
+    <fragment
+        android:id="@+id/microAtmFragment"
+        android:name="com.pdma.pdma.ui.microatm.MicroAtmFragment"
+        android:label="Micro ATM"
+        tools:layout="@layout/micro_atm_fragment" />
+    <fragment
+        android:id="@+id/mantraFragment"
+        android:name="com.pdma.pdma.ui.aeps.MantraFragment"
+        android:label="@string/capture_fingerprint"
+        tools:layout="@layout/mantra_fragment">
+        <action
+            android:id="@+id/action_mantraFragment_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="aepsInput"
+            app:argType="com.pdma.pdma.domain.AepsInput" />
+        <action
+            android:id="@+id/action_mantraFragment_to_aepsResponseFragment"
+            app:destination="@id/aepsResponseFragment"
+            app:popUpTo="@id/mantraFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/moveToBankFragment"
+        android:name="com.pdma.pdma.ui.home.MoveToBankFragment"
+        android:label="@string/move_to_bank" >
+        <argument
+            android:name="profile"
+            app:argType="com.pdma.pdma.network.ProfileData" />
+    </fragment>
+    <fragment
+        android:id="@+id/aepsResponseFragment"
+        android:name="com.pdma.pdma.ui.aeps.AepsResponseFragment"
+        tools:layout="@layout/fragment_aeps_response">
+        <argument
+            android:name="aeps_response"
+            app:argType="com.pdma.pdma.network.AepsResponse" />
+        <action
+            android:id="@+id/action_aepsResponseFragment_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/aepsResponseFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="aeps"
+            type="com.pdma.pdma.domain.AepsInput" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.aeps.MantraFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="185dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_baseline_fingerprint_24" />
+
+                <TextView
+                    android:id="@+id/mantra_fingerprint_mobile_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Mobile: 7982764035"
+                    android:text="@{`Mobile: ` + aeps.mobile}"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:id="@+id/mantra_fingerprint_aadhar_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Aadhar: ` + aeps.aadhar}"
+                    tools:text="Aadhar: 07982764035"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/mantra_fingerprint_amount_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Amount: ` + aeps.amount}"
+                    tools:text="Aadhar: 07982764035"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mantra_capture_fingerprint_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="@string/capture_fingerprint"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+    </LinearLayout>
+</layout>

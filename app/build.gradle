@@ -1,0 +1,162 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('E:\\Formax\\bankingpointindiat.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.pdma.pdma"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
+    }
+
+    packagingOptions {
+        exclude 'AndroidManifest.xml'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles 'retrofit2.pro'
+            buildConfigField "Boolean", "DEBUG_MODE", "false"
+            signingConfig signingConfigs.release
+        }
+        debug {
+            buildConfigField "Boolean", "DEBUG_MODE", "true"
+            minifyEnabled false
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //implementation files('libs\\java-json.jar')
+    implementation project(path: ':epmoneylib-paisanikal')
+    releaseApi files('libs/finosdk.aar')
+    debugApi files('libs/finosdk_uat_1.0.6.1.aar')
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+
+    implementation 'com.google.android.material:material:1.1.0'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // Coroutines for getting off the UI thread
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+
+    // Retrofit for networking
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$version_retrofit"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.5.0"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.1"
+//Serialization/Deserialization to convert Objects into JSON and back
+    implementation 'com.google.code.gson:gson:2.8.5'
+//Rx
+    implementation "io.reactivex.rxjava2:rxjava:2.2.0"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.1.1@aar'
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'de.greenrobot:greendao:2.1.0'
+    implementation 'com.karumi:dexter:5.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.datatheorem.android.trustkit:trustkit:1.0.2'
+    
+    // Moshi for parsing the JSON format
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Logging
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$version_room"
+
+    //Otp view
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
+
+    implementation 'gr.escsoft.michaelprimez.searchablespinner:SearchableSpinner:1.0.9'
+
+    //Circular ImageView
+    implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
+    def lottieVersion = "3.4.1"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    implementation 'gun0912.ted:tedpermission:2.2.3'
+
+    implementation('ch.acra:acra:4.5.0') {
+        exclude group: 'org.json'
+    }
+}
